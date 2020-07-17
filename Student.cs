@@ -6,6 +6,10 @@ namespace student_exercises
     class Student
     {
 
+        public Student(string firstNameParam){
+            FirstName = firstNameParam;
+        }
+
 
           // We don't actually NEED to add our primary and foreign keys right now, but we will eventualy. It won't hurt us to add them now, even if we don't really use them.
         public int Id {get; set;}
@@ -13,6 +17,7 @@ namespace student_exercises
         public string LastName {get; set;}
         public string SlackHandle {get; set;}
 
+        public int Grade {get; set;}
          public int CohortId{get; set;}
 
         // Even if we add a CohortId property, we should ALSO add a property of type Cohort so that we could display the student's name alongisde the name of their cohort

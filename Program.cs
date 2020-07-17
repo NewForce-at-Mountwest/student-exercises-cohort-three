@@ -38,24 +38,22 @@ namespace student_exercises
             };
 
             // Create some students
-            Student sydney = new Student(){
-                FirstName = "Sydney",
+            Student sydney = new Student("Sydney"){
                 LastName = "Wait",
                 Cohort = cohortOne // Assign sydney's cohort
             };
 
             cohortOne.Students.Add(sydney); // add sydney to cohort one's list of students
 
-            Student daryl = new Student(){
-                FirstName = "Daryl",
+            Student daryl = new Student("Daryl"){
                 LastName = "Adkins",
-                Cohort = cohortTwo
+                Cohort = cohortTwo,
+                CohortId = 1
             };
 
             cohortTwo.Students.Add(daryl);
 
-            Student caleb = new Student(){
-                FirstName = "Caleb",
+            Student caleb = new Student("Caleb"){
                 LastName = "Meadows",
                 Cohort = cohortTwo
             };
@@ -71,8 +69,6 @@ namespace student_exercises
 
             };
 
-
-
             Instructor jordan = new Instructor(){
                 FirstName = "Jordan",
                 LastName = "Castelloe",
@@ -87,6 +83,7 @@ namespace student_exercises
             tommy.AssignExerciseToStudent(daryl, chickenMonkey);
             tommy.AssignExerciseToStudent(caleb, kennel);
             jordan.AssignExerciseToStudent(daryl, battleOfTheBands);
+            jordan.AssignExerciseToStudent(sydney, kennel);
 
 
             // ------------- CHALLENGES ---------------------//
@@ -96,7 +93,8 @@ namespace student_exercises
 
             Console.WriteLine("Welcome! What would you like to do?");
             Console.WriteLine("1. See a report of which students are working on which exercise");
-            Console.WriteLine("2. Exit");
+            Console.WriteLine("2. Create a student");
+            Console.WriteLine("3. Exit");
             string response = Console.ReadLine();
             if(response == "1"){
                 allTheExercises.ForEach(exercise => {
@@ -105,7 +103,45 @@ namespace student_exercises
                     exercise.assignedStudnets.ForEach(student => Console.WriteLine($"{student.FirstName} {student.LastName}"));
                     Console.WriteLine();
                 });
+            } else if (response == "2"){
+                Console.WriteLine("Let's create a student!");
+                Console.WriteLine("What's the student's first name?");
+                string firstNameInput = Console.ReadLine();
+                Console.WriteLine("What's the student's last name?");
+                string lastNameInput = Console.ReadLine();
+
+                Console.WriteLine("What's the student's grade");
+
+                 // instantiate a new student with the info the user entered
+                Student userInputStudent = new Student(firstNameInput){
+                    LastName = lastNameInput
+                };
+
+                try {
+                    userInputStudent.Grade = Int32.Parse(Console.ReadLine());
+                } catch (FormatException){
+                    Console.WriteLine("Please enter a number for the student's grade");
+                }
+
+                Console.WriteLine($"Your student's name is {userInputStudent.FirstName} {userInputStudent.LastName} and their grade is {userInputStudent.Grade}");
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }

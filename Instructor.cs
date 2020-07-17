@@ -21,6 +21,7 @@ namespace student_exercises
         public string Specialty {get; set;}
 
         // Method that accepts a student and an exercise, and adds the exercise to the student's list of assigned exercises
+        
         public void AssignExerciseToStudent(Student victim, Exercise exerciseToAssign){
             // This is all you need for the first part of the practice!
             victim.AssignedExercises.Add(exerciseToAssign);
